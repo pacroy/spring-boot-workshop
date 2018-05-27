@@ -1,4 +1,4 @@
-package me.chairat.spring.boot.workshop.helloworld;
+package me.chairat.spring.boot.workshop;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class HelloworldApplicationTests {
+public class WorkshopApplicationTests {
 
 	@Test
 	public void contextLoads() {
