@@ -25,6 +25,10 @@ public class UserDaoService {
     public User save(User user) {
         if (user.getId()==null) {
             user.setId(++userCount);
+        } else {
+            if (this.findOne(user.getId())!=null) {
+                throw new UserAlreadyExistException("id-" + user.getId());
+            }
         }
         users.add(user);
         return user;

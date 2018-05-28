@@ -1,5 +1,6 @@
 package me.chairat.spring.boot.workshop.exception;
 
+import me.chairat.spring.boot.workshop.user.UserAlreadyExistException;
 import me.chairat.spring.boot.workshop.user.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,13 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
         ExceptionResponse exceptionResponse =
                 new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UserAlreadyExistException.class)
+    public final ResponseEntity<Object> handleUserAlreadyExistExceptions(UserAlreadyExistException ex, WebRequest request) {
+        ExceptionResponse exceptionResponse =
+                new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity(exceptionResponse, HttpStatus.NOT_ACCEPTABLE);
     }
 
 }
